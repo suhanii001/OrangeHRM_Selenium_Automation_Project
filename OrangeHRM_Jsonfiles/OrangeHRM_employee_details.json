@@ -1,0 +1,40 @@
+{
+  "details" :  [
+    {
+      "first_name": "Abhishek",
+      "last_name": "Sharma",
+      "username": "abhishek",
+      "password": "abhishek1234",
+      "confirm_password": "abhishek1234"
+    },
+    {
+      "first_name": "Rajan",
+      "last_name": "Jain",
+      "username": "rajan",
+      "password": "rajan1234",
+      "confirm_password": "rajan1234"
+    },
+    {
+      "first_name": "Surya",
+      "last_name": "Gupta",
+      "username": "surya",
+      "password": "surya1234",
+      "confirm_password": "surya1234"
+    },
+    {
+      "first_name": "Rajan",
+      "last_name": "Roy",
+      "username": "ronyroy",
+      "password": "ronyroy1234",
+      "confirm_password": "ronyroy1234"
+    },
+    {
+      "first_name": "Mia",
+      "last_name": "Shah",
+      "username": "miashah",
+      "password": "miashah1234",
+      "confirm_password": "miashah1234"
+    }
+  ]
+
+}

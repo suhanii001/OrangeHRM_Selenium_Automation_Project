@@ -1,0 +1,21 @@
+{
+  "details" :  [
+    {
+      "user_name": "Admin",
+      "password": "admin123"
+    },
+    {
+      "user_name": "Rocky",
+      "password": "rocky123"
+    },
+    {
+      "user_name": "Laila",
+      "password": "laila124"
+    },
+    {
+      "user_name": "Jenny",
+      "password": "jenny123"
+    }
+  ]
+
+}
