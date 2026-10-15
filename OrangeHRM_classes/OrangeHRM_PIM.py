@@ -1,5 +1,7 @@
 
 import time
+
+from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
@@ -29,19 +31,24 @@ class PIM_section:
         self.end_message = (By.XPATH, "//span[normalize-space()='(1) Record Found']")
 
     def add_employee(self, first_name, last_name, username, password, confirm_password):
-        self.wait.until(expected_conditions.element_to_be_clickable(self.add_option)).click()
-        self.driver.find_element(*self.first_name).send_keys(first_name)
-        self.driver.find_element(*self.last_name).send_keys(last_name)
-        print(f"Firstname of the user is: {first_name} and Lastname of the user is: {last_name}")
-        self.wait.until(expected_conditions.invisibility_of_element_located(self.invisible_oxd_loader))
-        self.wait.until(expected_conditions.element_to_be_clickable(self.create_login)).click()
-        self.driver.find_element(*self.username).send_keys(username)
-        print("Username of the current user is: ", username)
-        self.driver.find_element(*self.password).send_keys(password)
-        self.driver.find_element(*self.confirm_password).send_keys(confirm_password)
-        print(f"Password of the current user is:  {password}, and confirmation password is:  {confirm_password}")
-        self.wait.until(expected_conditions.element_to_be_clickable(self.save_employee)).click()
-        self.wait.until(expected_conditions.invisibility_of_element_located(self.invisible_oxd_spinner))
+        try:
+            self.wait.until(expected_conditions.element_to_be_clickable(self.add_option)).click()
+            self.driver.find_element(*self.first_name).send_keys(first_name)
+            self.driver.find_element(*self.last_name).send_keys(last_name)
+            print(f"Firstname of the user is: {first_name} and Lastname of the user is: {last_name}")
+            self.wait.until(expected_conditions.invisibility_of_element_located(self.invisible_oxd_loader))
+            self.wait.until(expected_conditions.element_to_be_clickable(self.create_login)).click()
+            self.driver.find_element(*self.username).send_keys(username)
+            print("Username of the current user is: ", username)
+            self.driver.find_element(*self.password).send_keys(password)
+            self.driver.find_element(*self.confirm_password).send_keys(confirm_password)
+            print(f"Password of the current user is:  {password}, and confirmation password is:  {confirm_password}")
+            self.wait.until(expected_conditions.element_to_be_clickable(self.save_employee)).click()
+            self.wait.until(expected_conditions.invisibility_of_element_located(self.invisible_oxd_spinner))
+
+        except TimeoutException:
+            print("Timed out waiting for page to load")
+            raise
 
     def search_employee(self, first_name, last_name):
         self.wait.until(expected_conditions.element_to_be_clickable(self.employee_list_option)).click()

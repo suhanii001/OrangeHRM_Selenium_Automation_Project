@@ -5,7 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from OrangeHRM_classes.OrangeHRM_PIM import PIM_section
 
-class Dashboard_section:
+class Navigation_sidebar_section:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
@@ -13,7 +13,7 @@ class Dashboard_section:
         self.menu_options = (By.CSS_SELECTOR, "ul[class='oxd-main-menu'] li")
         self.PIM_option = (By.XPATH, "//span[normalize-space()='PIM']")
 
-    def dashboard_options(self):
+    def sidebar_options(self):
         options_list = len(self.driver.find_elements(*self.length_of_list))
         for o in range(options_list):
             menu_list = self.driver.find_elements(*self.menu_options)

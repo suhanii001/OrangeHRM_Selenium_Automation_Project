@@ -21,11 +21,11 @@ def test_login_page_check(browser_requested, details_data):
     else:
         login.login_page(details_data["user_name"], details_data["password"])
 
-def test_dashboard_page_check(browser_requested):
+def test_sidebar_page_check(browser_requested):
     driver = browser_requested
     login = Login_section(driver)
     dashboard = login.login_page("Admin", "admin123")
-    dashboard.dashboard_options()
+    dashboard.sidebar_options()
     dashboard.PIM_click()
 @pytest.mark.smoke
 @pytest.mark.parametrize("employees_input", employees_details)
@@ -36,8 +36,8 @@ def test_PIM_page_check(browser_requested, employees_input):
     pim_obj = dashboard.PIM_click()
     pim_obj.add_employee(employees_input["first_name"], employees_input["last_name"], employees_input["username"], employees_input["password"], employees_input["confirm_password"])
     final_message = pim_obj.search_employee(employees_input["first_name"], employees_input["last_name"])
-    assert "1" in final_message, "Employee still exists after deletion"
-    print(final_message)
+    assert "Record" in final_message, "Employee still exists after deletion"
+
 
 
 

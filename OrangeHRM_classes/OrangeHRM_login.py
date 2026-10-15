@@ -3,7 +3,7 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-from OrangeHRM_classes.OrangeHRM_dashboard import Dashboard_section
+from OrangeHRM_classes.OrangeHRM_Sidebar import Navigation_sidebar_section
 class Login_section:
     def __init__(self, driver):
         self.driver = driver
@@ -19,7 +19,7 @@ class Login_section:
         self.driver.find_element(*self.username).send_keys(user_name)
         self.driver.find_element(*self.password).send_keys(password)
         self.wait.until(expected_conditions.element_to_be_clickable(self.login_button)).click()
-        dashboard = Dashboard_section(self.driver)
+        dashboard = Navigation_sidebar_section(self.driver)
         return dashboard
 
     def forgot_password(self, user_name, password):
